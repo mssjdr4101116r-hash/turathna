@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التراث الإسلامي — إرث حضاري خالد</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        kufi: ['Noto Kufi Arabic', 'sans-serif'],
+                        amiri: ['Amiri', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg: #0a0f0d;
+            --bg-light: #111a16;
+            --fg: #f0ebe3;
+            --fg-muted: #a8a08e;
+            --accent: #c9a84c;
+            --accent-light: #e0c76a;
+            --accent-dark: #8a6f2e;
+            --card: #141f1a;
+            --card-hover: #1a2b23;
+            --border: #2a3a30;
+            --emerald: #1a5c3a;
+            --emerald-deep: #0d3320;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Kufi Arabic', sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            overflow-x: hidden;
+        }
+
+        /* شريط التمرير المخصص */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dark); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* الخلفية المتحركة */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(26, 92, 58, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(201, 168, 76, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(13, 51, 32, 0.4) 0%, transparent 70%);
+            animation: bgShift 20s ease-in-out infinite;
+        }
+
+        @keyframes bgShift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-2%, 1%) rotate(1deg); }
+            66% { transform: translate(1%, -1%) rotate(-0.5deg); }
+        }
+
+        /* النمط الهندسي الإسلامي */
+        .geometric-pattern {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            opacity: 0.06;
+            border: 2px solid var(--accent);
+            transform: rotate(45deg);
+        }
+
+        .geometric-pattern::before,
+        .geometric-pattern::after {
+            content: '';
+            position: absolute;
+            border: 2px solid var(--accent);
+        }
+
+        .geometric-pattern::before {
+            inset: 20px;
+            transform: rotate(15deg);
+        }
+
+        .geometric-pattern::after {
+            inset: 40px;
+            transform: rotate(30deg);
+        }
+
+        /* تأثير النجوم المتلألئة */
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.1; transform: scale(0.5); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+
+        /* تأثير الخط الزخرفي */
+        .ornament-line {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .ornament-line::before,
+        .ornament-line::after {
+            content: '';
+            height: 1px;
+            width: 80px;
+            background: linear-gradient(to var(--dir, left), transparent, var(--accent), transparent);
+        }
+
+        [dir="rtl"] .ornament-line::before { --dir: right; }
+        [dir="rtl"] .ornament-line::after { --dir: left; }
+
+        /* بطاقات الفروع */
+        .branch-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .branch-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(to left, var(--accent), var(--emerald));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        [dir="rtl"] .branch-card::before {
+            transform-origin: right;
+        }
+
+        .branch-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .branch-card:hover {
+            background: var(--card-hover);
+            border-color: var(--accent-dark);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(201, 168, 76, 0.05);
+        }
+
+        .branch-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--emerald-deep), rgba(201, 168, 76, 0.15));
+            border: 1px solid var(--border);
+            color: var(--accent);
+            transition: all 0.4s ease;
+        }
+
+        .branch-card:hover .branch-icon {
+            background: linear-gradient(135deg, var(--accent-dark), var(--emerald));
+            color: var(--fg);
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        /* المعرض */
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 15, 13, 0.9) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* الجدول الزمني */
+        .timeline-line {
+            position: absolute;
+            right: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--accent-dark), var(--accent), var(--accent-dark), transparent);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line { right: 24px; }
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--bg);
+            position: absolute;
+            right: calc(50% - 8px);
+            top: 24px;
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(201, 168, 76, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-dot { right: 16px; }
+        }
+
+        .timeline-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .timeline-card:hover {
+            border-color: var(--accent-dark);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* الإحصائيات */
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent), var(--accent-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        /* اقتباس */
+        .quote-card {
+            background: linear-gradient(135deg, var(--emerald-deep), rgba(26, 92, 58, 0.2));
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+        }
+
+        .quote-card::before {
+            content: '\201D';
+            font-family: 'Amiri', serif;
+            font-size: 8rem;
+            color: var(--accent);
+            opacity: 0.15;
+            position: absolute;
+            top: -20px;
+            right: 30px;
+            line-height: 1;
+        }
+
+        /* زر */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--bg);
+            font-weight: 700;
+            padding: 14px 36px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            font-family: 'Noto Kufi Arabic', sans-serif;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 168, 76, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            font-weight: 600;
+            padding: 14px 36px;
+            border-radius: 12px;
+            border: 2px solid var(--accent-dark);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Noto Kufi Arabic', sans-serif;
+            font-size: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(201, 168, 76, 0.1);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* التنقل */
+        .nav-link {
+            color: var(--fg-muted);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+            background: rgba(201, 168, 76, 0.08);
+        }
+
+        .nav-active {
+            color: var(--accent) !important;
+            background: rgba(201, 168, 76, 0.1);
+        }
+
+        /* تأثير الظهور */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* الجسيمات المتحركة */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float var(--dur) ease-in-out infinite;
+            animation-delay: var(--del);
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% { opacity: 0; transform: translateY(0) translateX(0); }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.6; }
+            100% { opacity: 0; transform: translateY(-100px) translateX(30px); }
+        }
+
+        /* القائمة المتنقلة */
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 15, 13, 0.97);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .mobile-menu a {
+            color: var(--fg);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover { color: var(--accent); }
+
+        /* إشعار */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--card);
+            border: 1px solid var(--accent-dark);
+            color: var(--fg);
+            padding: 16px 32px;
+            border-radius: 12px;
+            z-index: 200;
+            font-family: 'Noto Kufi Arabic', sans-serif;
+            font-weight: 500;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* صفحة المعالم */
+        .landmark-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .landmark-card:hover {
+            border-color: var(--accent-dark);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .landmark-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .landmark-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* تأثير القوس الإسلامي */
+        .arch-shape {
+            position: relative;
+        }
+
+        .arch-shape::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 60px;
+            border: 2px solid var(--accent-dark);
+            border-bottom: none;
+            border-radius: 60px 60px 0 0;
+            opacity: 0.3;
+        }
+
+        /* أنيميشن النبض */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(201, 168, 76, 0.1); }
+            50% { box-shadow: 0 0 40px rgba(201, 168, 76, 0.25); }
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        /* تأثير الكتابة */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+
+        /* تقليل الحركة */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* النافذة المنبثقة */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 150;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            padding: 2.5rem;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+  
+/* نافذة تسجيل الدخول */
+#authModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#authModal.active {
+    display: flex;
+}
+
+#authModal .modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    padding: 35px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    text-align: center;
+}
+
+#authModal h2 {
+    color: var(--fg);
+    margin-bottom: 25px;
+}
+
+#authModal input {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--fg);
+    font: inherit;
+    outline: none;
+}
+
+#authModal input:focus {
+    border-color: var(--primary);
+}
+
+#authModal #authButton {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#authModal #authSwitch {
+    margin-top: 20px;
+    color: var(--fg-muted);
+}
+
+#authModal #authSwitch a {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#authModal .modal-content > button {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    border: none;
+    background: transparent;
+    color: var(--fg);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+        /* إدخال حقل */
+        .form-input {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 18px;
+            color: var(--fg);
+            font-family: 'Noto Kufi Arabic', sans-serif;
+            font-size: 0.95rem;
+            width: 100%;
+            transition: border-color 0.3s ease;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent);
+        }
+
+        .form-input::placeholder {
+            color: var(--fg-muted);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط التنقل -->
+    <nav id="navbar" style="position: fixed; top: 0; right: 0; left: 0; z-index: 50; transition: all 0.4s ease;">
+        <div style="max-width: 1280px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between;">
+            <!-- الشعار -->
+            <a href="#hero" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
+                <div style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-mosque" style="color: var(--bg); font-size: 1.2rem;"></i>
+                </div>
+                <span style="font-weight: 800; font-size: 1.2rem; color: var(--fg);">تراثنا</span>
+            </a>
+
+            <!-- الروابط -->
+            <div id="navLinks" style="display: flex; align-items: center; gap: 4px;" class="hidden md:flex">
+                <a href="#hero" class="nav-link nav-active" data-section="hero">الرئيسية</a>
+                <a href="#branches" class="nav-link" data-section="branches">الفروع</a>
+                <a href="#timeline" class="nav-link" data-section="timeline">المسيرة</a>
+                <a href="#landmarks" class="nav-link" data-section="landmarks">المعالم</a>
+                <a href="#gallery" class="nav-link" data-section="gallery">المعرض</a>
+                <a href="#contact" class="nav-link" data-section="contact">تواصل</a>
+         <button id="authNavButton"
+        type="button"
+        onclick="openAuthModal()">
+    تسجيل الدخول
+</button>
+            </div>
+
+            <!-- زر القائمة -->
+            <button id="menuBtn" onclick="toggleMenu()" style="display: none; background: none; border: none; color: var(--fg); font-size: 1.5rem; cursor: pointer; padding: 8px;" class="md:hidden" aria-label="فتح القائمة">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- القائمة المتنقلة -->
+    <div id="mobileMenu" class="mobile-menu">
+        <button onclick="toggleMenu()" style="position: absolute; top: 24px; left: 24px; background: none; border: none; color: var(--fg); font-size: 1.8rem; cursor: pointer;" aria-label="إغلاق القائمة">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#hero" onclick="toggleMenu()">الرئيسية</a>
+        <a href="#branches" onclick="toggleMenu()">الفروع</a>
+        <a href="#timeline" onclick="toggleMenu()">المسيرة</a>
+        <a href="#landmarks" onclick="toggleMenu()">المعالم</a>
+        <a href="#gallery" onclick="toggleMenu()">المعرض</a>
+        <a href="#contact" onclick="toggleMenu()">تواصل معنا</a>
+    </div>
+
+    <!-- القسم الرئيسي -->
+    <header id="hero" style="min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden;">
+        <div class="hero-bg"></div>
+
+        <!-- الأنماط الهندسية -->
+        <div class="geometric-pattern" style="top: 10%; left: -5%;"></div>
+        <div class="geometric-pattern" style="bottom: 10%; right: -5%; width: 200px; height: 200px;"></div>
+        <div class="geometric-pattern" style="top: 50%; left: 60%; width: 150px; height: 150px; opacity: 0.03;"></div>
+
+        <!-- النجوم -->
+        <div id="starsContainer" style="position: absolute; inset: 0; pointer-events: none;"></div>
+
+        <!-- الجسيمات -->
+        <div id="particlesContainer" style="position: absolute; inset: 0; pointer-events: none;"></div>
+
+        <div style="max-width: 1280px; margin: 0 auto; padding: 120px 24px 80px; position: relative; z-index: 1; width: 100%;">
+            <div style="max-width: 800px;">
+                <div class="ornament-line animate-in" style="margin-bottom: 24px;">
+                    <span style="color: var(--accent); font-size: 0.85rem; font-weight: 600; letter-spacing: 3px;">إرثٌ يمتد عبر القرون</span>
+                </div>
+
+                <h1 class="animate-in delay-1" style="font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.2; margin-bottom: 24px;">
+                    التراث <span style="color: var(--accent);">الإسلامي</span><br>
+                    <span style="font-weight: 300; font-size: 0.6em; color: var(--fg-muted);">حضارةٌ سطرت أروع صفحات التاريخ</span>
+                </h1>
+
+                <p class="animate-in delay-2" style="font-size: 1.15rem; line-height: 1.9; color: var(--fg-muted); max-width: 600px; margin-bottom: 40px;">
+                    رحلة عبر أكثر من أربعة عشر قرناً من الإبداع والعلم والفن، حيث تتجلى عظمة الحضارة الإسلامية في كل زاوية من زوايا تراثها الغني المتنوع.
+                </p>
+
+                <div class="animate-in delay-3" style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 60px;">
+                    <button class="btn-primary" onclick="document.getElementById('branches').scrollIntoView({behavior:'smooth'})">
+                        استكشف التراث
+                        <i class="fas fa-arrow-left" style="font-size: 0.85rem;"></i>
+                    </button>
+                    <button class="btn-secondary" onclick="document.getElementById('timeline').scrollIntoView({behavior:'smooth'})">
+                        المسيرة التاريخية
+                    </button>
+                </div>
+
+                <!-- إحصائيات سريعة -->
+                <div class="animate-in delay-4" style="display: flex; flex-wrap: wrap; gap: 40px;">
+                    <div>
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--accent);">+1400</div>
+                        <div style="color: var(--fg-muted); font-size: 0.85rem;">عام من الإرث</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--accent);">+50</div>
+                        <div style="color: var(--fg-muted); font-size: 0.85rem;">دولة إسلامية</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--accent);">+1000</div>
+                        <div style="color: var(--fg-muted); font-size: 0.85rem;">معلم تاريخي</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- سهم التمرير -->
+        <div style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); animation: bounce 2s ease-in-out infinite; z-index: 1;">
+            <i class="fas fa-chevron-down" style="color: var(--accent); font-size: 1.2rem; opacity: 0.5;"></i>
+        </div>
+        <style>
+            @keyframes bounce {
+                0%, 100% { transform: translateX(-50%) translateY(0); }
+                50% { transform: translateX(-50%) translateY(10px); }
+            }
+        </style>
+    </header>
+
+    <!-- الاقتباس -->
+    <section style="padding: 0 24px 100px; position: relative;">
+        <div style="max-width: 900px; margin: 0 auto;" class="reveal">
+            <div class="quote-card pulse-glow">
+                <p style="font-family: 'Amiri', serif; font-size: 1.4rem; line-height: 2; color: var(--fg); position: relative; z-index: 1; text-align: center;">
+                    إنّما يُورَثُ العلمُ والعقلُ، ولا يُورَثُ المالُ. فالعلمُ باقٍ وإنْ فنى مَنْ علّمه، والمالُ ذاهبٌ وإنْ بقي مَنْ جمعه.
+                </p>
+                <div class="ornament-line" style="margin-top: 20px;">
+                    <span style="color: var(--accent); font-size: 0.85rem;">الإمام الشافعي</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- فروع التراث -->
+    <section id="branches" style="padding: 100px 24px; position: relative;">
+        <div style="max-width: 1280px; margin: 0 auto;">
+            <div class="reveal" style="text-align: center; margin-bottom: 64px;">
+                <div class="ornament-line" style="margin-bottom: 16px;">
+                    <span style="color: var(--accent); font-size: 0.85rem; font-weight: 600; letter-spacing: 2px;">أبعاد التراث</span>
+                </div>
+                <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 16px;">فروع التراث الإسلامي</h2>
+                <p style="color: var(--fg-muted); max-width: 600px; margin: 0 auto; line-height: 1.8;">يشتمل التراث الإسلامي على مجالات عديدة تجسد روعة الحضارة الإسلامية وثراء إسهاماتها في مسيرة البشرية</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;">
+                <!-- العمارة -->
+                <div class="branch-card reveal" style="transition-delay: 0.05s;">
+                    <div class="branch-icon" style="margin-bottom: 20px;">
+                        <i class="fas fa-mosque"></i>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 12px;">العمارة الإسلامية</h3>
+                    <p style="color: var(--fg-muted); line-height: 1.8; font-size: 0.9rem;">من المساجد العظيمة والقصور الفخمة إلى القناطر والحمامات، تُظهر العمارة الإسلامية إبداعاً لا مثيل له في التصميم والهندسة والزخرفة.</p>
+                    <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">المساجد</span>
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">القصور</span>
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">المدارس</span>
+                    </div>
+                </div>
+
+                <!-- العلوم -->
+                <div class="branch-card reveal" style="transition-delay: 0.1s;">
+                    <div class="branch-icon" style="margin-bottom: 20px;">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 12px;">العلوم والمعارف</h3>
+                    <p style="color: var(--fg-muted); line-height: 1.8; font-size: 0.9rem;">ريادة إسلامية في الرياضيات والفلك والكيمياء والطب، حيث أسس علماء المسلمين قواعد العلم الحديث وأناروا دروب المعرفة للبشرية.</p>
+                    <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">الفلك</span>
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">الطب</span>
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">الرياضيات</span>
+                    </div>
+                </div>
+
+                <!-- الفن -->
+                <div class="branch-card reveal" style="transition-delay: 0.15s;">
+                    <div class="branch-icon" style="margin-bottom: 20px;">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 12px;">الفنون الإسلامية</h3>
+                    <p style="color: var(--fg-muted); line-height: 1.8; font-size: 0.9rem;">تشمل الخط العربي والزخارف الهندسية والنباتية والفسيفساء والسيراميك والسجاد، وتتميز بتجنب التصوير البشري والاعتماد على التجريد.</p>
+                    <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">الخط</span>
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">الزخرفة</span>
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">الفسيفساء</span>
+                    </div>
+                </div>
+
+                <!-- الأدب -->
+                <div class="branch-card reveal" style="transition-delay: 0.2s;">
+                    <div class="branch-icon" style="margin-bottom: 20px;">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 12px;">الأدب والشعر</h3>
+                    <p style="color: var(--fg-muted); line-height: 1.8; font-size: 0.9rem;">مكتبة أدبية ضخمة تمتد من الشعر الجاهلي إلى العصر العباسي والأندلسي، شاملة الشعر والنثر والمقامات والرسائل الأدبية.</p>
+                    <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">الشعر</span>
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">النثر</span>
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">المقامات</span>
+                    </div>
+                </div>
+
+                <!-- المخطوطات -->
+                <div class="branch-card reveal" style="transition-delay: 0.25s;">
+                    <div class="branch-icon" style="margin-bottom: 20px;">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 12px;">المخطوطات والكتب</h3>
+                    <p style="color: var(--fg-muted); line-height: 1.8; font-size: 0.9rem;">آلاف المخطوطات النادرة التي تحفظ العلوم والفنون والتفسير والحديث والفقه، وتُعد شاهداً على عناية المسلمين بالعلم والتدوين.</p>
+                    <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">القرآن</span>
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">الحديث</span>
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">الفقه</span>
+                    </div>
+                </div>
+
+                <!-- الفلسفة -->
+                <div class="branch-card reveal" style="transition-delay: 0.3s;">
+                    <div class="branch-icon" style="margin-bottom: 20px;">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 12px;">الفلسفة والفكر</h3>
+                    <p style="color: var(--fg-muted); line-height: 1.8; font-size: 0.9rem;">إسهامات فلسفية عميقة في المنطق وعلم الكلام والتصوف، مع ترجمة وشرح الإرث اليوناني وتطويره بشكل إبداعي ومبتكر.</p>
+                    <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">الكلام</span>
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">التصوف</span>
+                        <span style="background: rgba(201,168,76,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">المنطق</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الإحصائيات -->
+    <section style="padding: 80px 24px; background: linear-gradient(180deg, transparent, rgba(26,92,58,0.08), transparent);">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: center;">
+                <div class="reveal">
+                    <div class="stat-number" data-target="1400">0</div>
+                    <div style="color: var(--fg-muted); font-size: 0.9rem; margin-top: 8px;">عام من الحضارة</div>
+                </div>
+                <div class="reveal" style="transition-delay: 0.1s;">
+                    <div class="stat-number" data-target="57">0</div>
+                    <div style="color: var(--fg-muted); font-size: 0.9rem; margin-top: 8px;">دولة إسلامية اليوم</div>
+                </div>
+                <div class="reveal" style="transition-delay: 0.2s;">
+                    <div class="stat-number" data-target="3000000">0</div>
+                    <div style="color: var(--fg-muted); font-size: 0.9rem; margin-top: 8px;">مخطوط إسلامي</div>
+                </div>
+                <div class="reveal" style="transition-delay: 0.3s;">
+                    <div class="stat-number" data-target="1900">0</div>
+                    <div style="color: var(--fg-muted); font-size: 0.9rem; margin-top: 8px;">مليون مسلم</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المسيرة التاريخية -->
+    <section id="timeline" style="padding: 100px 24px; position: relative;">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <div class="reveal" style="text-align: center; margin-bottom: 64px;">
+                <div class="ornament-line" style="margin-bottom: 16px;">
+                    <span style="color: var(--accent); font-size: 0.85rem; font-weight: 600; letter-spacing: 2px;">عبر العصور</span>
+                </div>
+                <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 16px;">المسيرة التاريخية</h2>
+                <p style="color: var(--fg-muted); max-width: 550px; margin: 0 auto; line-height: 1.8;">محطات مضيئة من تاريخ الحضارة الإسلامية الغني</p>
+            </div>
+
+            <div style="position: relative;">
+                <div class="timeline-line"></div>
+
+                <!-- المحطة 1 -->
+                <div class="reveal" style="display: flex; align-items: flex-start; margin-bottom: 60px; position: relative;">
+                    <div class="timeline-dot"></div>
+                    <div style="width: calc(50% - 40px); margin-right: auto; margin-left: 0;" class="hidden md:block">
+                        <div class="timeline-card">
+                            <span style="color: var(--accent); font-weight: 700; font-size: 0.85rem;">570 - 632 م</span>
+                            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 8px 0;">البعثة النبوية</h3>
+                            <p style="color: var(--fg-muted); font-size: 0.9rem; line-height: 1.7;">نشأة الإسلام في شبه الجزيرة العربية وبزوغ فجر حضارة جديدة غيّرت مجرى التاريخ البشري بأكمله.</p>
+                        </div>
+                    </div>
+                    <div class="md:hidden" style="margin-right: 50px; width: 100%;">
+                        <div class="timeline-card">
+                            <span style="color: var(--accent); font-weight: 700; font-size: 0.85rem;">570 - 632 م</span>
+                            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 8px 0;">البعثة النبوية</h3>
+                            <p style="color: var(--fg-muted); font-size: 0.9rem; line-height: 1.7;">نشأة الإسلام وبزوغ فجر حضارة جديدة غيّرت مجرى التاريخ.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- المحطة 2 -->
+                <div class="reveal" style="display: flex; align-items: flex-start; margin-bottom: 60px; position: relative;">
+                    <div class="timeline-dot"></div>
+                    <div style="width: calc(50% - 40px); margin-left: auto; margin-right: 0;" class="hidden md:block">
+                        <div class="timeline-card">
+                            <span style="color: var(--accent); font-weight: 700; font-size: 0.85rem;">661 - 750 م</span>
+                            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 8px 0;">العصر الأموي</h3>
+                            <p style="color: var(--fg-muted); font-size: 0.9rem; line-height: 1.7;">تأسيس أول إمبراطورية إسلامية واسعة، وبناء قبة الصخرة والمسجد الأموي، وبدء حركة الترجمة العلمية.</p>
+                        </div>
+                    </div>
+                    <div class="md:hidden" style="margin-right: 50px; width: 100%;">
+                        <div class="timeline-card">
+                            <span style="color: var(--accent); font-weight: 700; font-size: 0.85rem;">661 - 750 م</span>
+                            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 8px 0;">العصر الأموي</h3>
+                            <p style="color: var(--fg-muted); font-size: 0.9rem; line-height: 1.7;">تأسيس أول إمبراطورية إسلامية وبناء المعالم الكبرى.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- المحطة 3 -->
+                <div class="reveal" style="display: flex; align-items: flex-start; margin-bottom: 60px; position: relative;">
+                    <div class="timeline-dot"></div>
+                    <div style="width: calc(50% - 40px); margin-right: auto; margin-left: 0;" class="hidden md:block">
+                        <div class="timeline-card">
+                            <span style="color: var(--accent); font-weight: 700; font-size: 0.85rem;">750 - 1258 م</span>
+                            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 8px 0;">العصر العباسي الذهبي</h3>
+                            <p style="color: var(--fg-muted); font-size: 0.9rem; line-height: 1.7;">العصر الذهبي للحضارة الإسلامية: تأسيس بيت الحكمة، وترجمة العلوم، وابتكار الجبر والخوارزميات على يد ابن موسى الخوارزمي.</p>
+                        </div>
+                    </div>
+                    <div class="md:hidden" style="margin-right: 50px; width: 100%;">
+                        <div class="timeline-card">
+                            <span style="color: var(--accent); font-weight: 700; font-size: 0.85rem;">750 - 1258 م</span>
+                            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 8px 0;">العصر العباسي الذهبي</h3>
+                            <p style="color: var(--fg-muted); font-size: 0.9rem; line-height: 1.7;">تأسيس بيت الحكمة وابتكار الجبر والخوارزميات.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- المحطة 4 -->
+                <div class="reveal" style="display: flex; align-items: flex-start; margin-bottom: 60px; position: relative;">
+                    <div class="timeline-dot"></div>
+                    <div style="width: calc(50% - 40px); margin-left: auto; margin-right: 0;" class="hidden md:block">
+                        <div class="timeline-card">
+                            <span style="color: var(--accent); font-weight: 700; font-size: 0.85rem;">711 - 1492 م</span>
+                            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 8px 0;">حضارة الأندلس</h3>
+                            <p style="color: var(--fg-muted); font-size: 0.9rem; line-height: 1.7;">نموذج فريد من التعايش الحضاري وبناء قصر الحمراء وقرطبة التي كانت أكبر مدينة في أوروبا ومركزاً للعلم والنور.</p>
+                        </div>
+                    </div>
+                    <div class="md:hidden" style="margin-right: 50px; width: 100%;">
+                        <div class="timeline-card">
+                            <span style="color: var(--accent); font-weight: 700; font-size: 0.85rem;">711 - 1492 م</span>
+                            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 8px 0;">حضارة الأندلس</h3>
+                            <p style="color: var(--fg-muted); font-size: 0.9rem; line-height: 1.7;">نموذج فريد من التعايش وبناء قصر الحمراء وقرطبة.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- المحطة 5 -->
+                <div class="reveal" style="display: flex; align-items: flex-start; position: relative;">
+                    <div class="timeline-dot"></div>
+                    <div style="width: calc(50% - 40px); margin-right: auto; margin-left: 0;" class="hidden md:block">
+                        <div class="timeline-card">
+                            <span style="color: var(--accent); font-weight: 700; font-size: 0.85rem;">1299 - 1922 م</span>
+                            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 8px 0;">الدولة العثمانية</h3>
+                            <p style="color: var(--fg-muted); font-size: 0.9rem; line-height: 1.7;">إمبراطورية امتدت across ثلاث قارات، وتركيت إرثاً معمارياً ضخماً includes المسجد الأزرق ومسجد سليمانية.</p>
+                        </div>
+                    </div>
+                    <div class="md:hidden" style="margin-right: 50px; width: 100%;">
+                        <div class="timeline-card">
+                            <span style="color: var(--accent); font-weight: 700; font-size: 0.85rem;">1299 - 1922 م</span>
+                            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 8px 0;">الدولة العثمانية</h3>
+                            <p style="color: var(--fg-muted); font-size: 0.9rem; line-height: 1.7;">إمبراطورية عبر ثلاث قارات وإرث معماري عظيم.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المعالم -->
+    <section id="landmarks" style="padding: 100px 24px; background: linear-gradient(180deg, transparent, rgba(26,92,58,0.05), transparent);">
+        <div style="max-width: 1280px; margin: 0 auto;">
+            <div class="reveal" style="text-align: center; margin-bottom: 64px;">
+                <div class="ornament-line" style="margin-bottom: 16px;">
+                    <span style="color: var(--accent); font-size: 0.85rem; font-weight: 600; letter-spacing: 2px;">شواهد خالدة</span>
+                </div>
+                <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 16px;">معالم تراثية بارزة</h2>
+                <p style="color: var(--fg-muted); max-width: 550px; margin: 0 auto; line-height: 1.8;">أبرز المعالم التي تجسد عظمة التراث الإسلامي المعماري</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;">
+                <div class="landmark-card reveal" onclick="openModal('الحرم المكي الشريف', 'أقدس بقعة في الإسلام، يتوسطه الكعبة المشرفة التي بناها إبراهيم عليه السلام. يتسع لأكثر من مليوني مصلٍّ، ويضم صحن المطاف والمسعى والمقام.')">
+                    <div style="overflow: hidden;">
+                        <img src="img/download (1).jpeg" alt="الحرم المكي" loading="lazy">
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--accent); font-size: 0.8rem;"></i>
+                            <span style="color: var(--fg-muted); font-size: 0.8rem;">مكة المكرمة</span>
+                        </div>
+                        <h3 style="font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">الحرم المكي الشريف</h3>
+                        <p style="color: var(--fg-muted); font-size: 0.85rem; line-height: 1.7;">أقدس بقعة في الإسلام يتوسطها الكعبة المشرفة</p>
+                    </div>
+                </div>
+
+                <div class="landmark-card reveal" onclick="openModal('المسجد الأقصى المبارك', 'ثالث أقدس مسجد في الإسلام والمسرى بمعجزة الإسراء والمعراج. يتميز بقبة الصخرة الذهبية التي تعد تحفة معمارية فريدة ورمزاً للقدس.')">
+                    <div style="overflow: hidden;">
+                        <img src="img/download.jpeg" alt="المسجد الأقصى" loading="lazy">
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--accent); font-size: 0.8rem;"></i>
+                            <span style="color: var(--fg-muted); font-size: 0.8rem;">القدس الشريف</span>
+                        </div>
+                        <h3 style="font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">المسجد الأقصى المبارك</h3>
+                        <p style="color: var(--fg-muted); font-size: 0.85rem; line-height: 1.7;">ثالث أقدس مسجد في الإسلام وقبة الصخرة الذهبية</p>
+                    </div>
+                </div>
+
+                <div class="landmark-card reveal" onclick="openModal('قصر الحمراء', 'تحفة معمارية أندلسية بناها بنو الأحمر في غرناطة. يجمع بين الفن الإسلامي والطبيعة الخلابة في حدائقه وأفنيته وغرفه المزخرفة بالفسيفساء والأقواس.')">
+                    <div style="overflow: hidden;">
+                        <img src="img/download (2).jpeg" alt="قصر الحمراء" loading="lazy">
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--accent); font-size: 0.8rem;"></i>
+                            <span style="color: var(--fg-muted); font-size: 0.8rem;">غرناطة، إسبانيا</span>
+                        </div>
+                        <h3 style="font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">قصر الحمراء</h3>
+                        <p style="color: var(--fg-muted); font-size: 0.85rem; line-height: 1.7;">تحفة أندلسية تجمع بين الفن الإسلامي والطبيعة</p>
+                    </div>
+                </div>
+
+                <div class="landmark-card reveal" onclick="openModal('المسجد الأزرق', 'بُني بأمر من السلطان أحمد الأول في إسطنبول. يتميز بآلاف البلاط المزخرف باللون الأزرق وأشرقته الـ260 ونظام قباته المبهرة.')">
+                    <div style="overflow: hidden;">
+                        <img src="img/B.jfif" alt="المسجد الأزرق" loading="lazy">
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--accent); font-size: 0.8rem;"></i>
+                            <span style="color: var(--fg-muted); font-size: 0.8rem;">إسطنبول، تركيا</span>
+                        </div>
+                        <h3 style="font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">المسجد الأزرق</h3>
+                        <p style="color: var(--fg-muted); font-size: 0.85rem; line-height: 1.7;">روائع البلاط الأزرق وأشرقته المئات في إسطنبول</p>
+                    </div>
+                </div>
+
+                <div class="landmark-card reveal" onclick="openModal('مسجد قرطبة الكبير', 'كان أكبر مسجد في العالم عند بنائه. يتميز بأعمدته الـ856 وأقواسه المزدوجة الحمراء والبيضاء التي تشكل متاهة بصرية فريدة من نوعها.')">
+                    <div style="overflow: hidden;">
+                        <img src="img/K.jfif" alt="مسجد قرطبة" loading="lazy">
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--accent); font-size: 0.8rem;"></i>
+                            <span style="color: var(--fg-muted); font-size: 0.8rem;">قرطبة، إسبانيا</span>
+                        </div>
+                        <h3 style="font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">مسجد قرطبة الكبير</h3>
+                        <p style="color: var(--fg-muted); font-size: 0.85rem; line-height: 1.7;">أعمدته الـ856 وأقواسه المزدوجة تحفة فريدة</p>
+                    </div>
+                </div>
+
+                <div class="landmark-card reveal" onclick="openModal('مسجد سامراء الكبير', 'يمتد على مساحة هائلة ويتميز بمئذنته الملتوية الفريدة التي يبلغ ارتفاعها 52 متراً. يُعد من أضخم المساجد في العالم الإسلامي.')">
+                    <div style="overflow: hidden;">
+                        <img src="img/S.jfif" alt="مسجد سامراء" loading="lazy">
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--accent); font-size: 0.8rem;"></i>
+                            <span style="color: var(--fg-muted); font-size: 0.8rem;">سامراء، العراق</span>
+                        </div>
+                        <h3 style="font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">مسجد سامراء الكبير</h3>
+                        <p style="color: var(--fg-muted); font-size: 0.85rem; line-height: 1.7;">مئذرته الملتوية وأضخم مساجد العالم الإسلامي</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المعرض -->
+    <section id="gallery" style="padding: 100px 24px;">
+        <div style="max-width: 1280px; margin: 0 auto;">
+            <div class="reveal" style="text-align: center; margin-bottom: 64px;">
+                <div class="ornament-line" style="margin-bottom: 16px;">
+                    <span style="color: var(--accent); font-size: 0.85rem; font-weight: 600; letter-spacing: 2px;">لحظات خالدة</span>
+                </div>
+                <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 16px;">معرض الصور</h2>
+                <p style="color: var(--fg-muted); max-width: 550px; margin: 0 auto; line-height: 1.8;">لمحات من جمال التراث الإسلامي في أنحاء العالم</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+                <div class="gallery-item reveal">
+                    <img src="img/F.jfif" alt="خط عربي" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 style="font-weight: 700; font-size: 1rem;">فن الخط العربي</h4>
+                            <p style="color: var(--fg-muted); font-size: 0.8rem;">أجمل الخطوط الإسلامية</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item reveal" style="transition-delay: 0.05s;">
+                    <img src="img/E.jfif" alt="زخارف مغربية" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 style="font-weight: 700; font-size: 1rem;">الزليج المغربي</h4>
+                            <p style="color: var(--fg-muted); font-size: 0.8rem;">هندسة مذهلة بالفسيفساء</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item reveal" style="transition-delay: 0.1s;">
+                    <img src="img/D.jfif" alt="سجاد فارسي" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 style="font-weight: 700; font-size: 1rem;">السجاد الفارسي</h4>
+                            <p style="color: var(--fg-muted); font-size: 0.8rem;">حرفية يدوية فائقة الجودة</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item reveal" style="transition-delay: 0.15s;">
+                    <img src="img/a.jfif" alt="مخطوط قرآني" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 style="font-weight: 700; font-size: 1rem;">المخطوطات القرآنية</h4>
+                            <p style="color: var(--fg-muted); font-size: 0.8rem;">نوادر المخطوطات الإسلامية</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item reveal" style="transition-delay: 0.2s;">
+                    <img src="img/I.jfif" alt="أنماط هندسية" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 style="font-weight: 700; font-size: 1rem;">الأنماط الهندسية</h4>
+                            <p style="color: var(--fg-muted); font-size: 0.8rem;">تكرار لا نهائي بديع</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item reveal" style="transition-delay: 0.25s;">
+                    <img src="img/W.jfif" alt="فانوس إسلامي" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div>
+                            <h4 style="font-weight: 700; font-size: 1rem;">الفسيفساء والزجاج</h4>
+                            <p style="color: var(--fg-muted); font-size: 0.8rem;">فنون الزخرفة الإسلامية</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- العلماء -->
+    <section style="padding: 100px 24px; background: linear-gradient(180deg, transparent, rgba(201,168,76,0.03), transparent);">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <div class="reveal" style="text-align: center; margin-bottom: 64px;">
+                <div class="ornament-line" style="margin-bottom: 16px;">
+                    <span style="color: var(--accent); font-size: 0.85rem; font-weight: 600; letter-spacing: 2px;">أعلام الفكر</span>
+                </div>
+                <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 16px;">علماء أسهموا في الحضارة</h2>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
+                <div class="branch-card reveal" style="display: flex; gap: 20px; align-items: flex-start;">
+                    <div style="width: 60px; height: 60px; min-width: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--emerald-deep), var(--accent-dark)); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--accent);">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-weight: 700; font-size: 1.05rem; margin-bottom: 4px;">ابن سينا</h3>
+                        <span style="color: var(--accent); font-size: 0.8rem;">980 - 1037 م</span>
+                        <p style="color: var(--fg-muted); font-size: 0.85rem; line-height: 1.7; margin-top: 8px;">صاحب كتاب القانون في الطب الذي ظل مرجعاً أوروبياً لخمسة قرون، ورائد الطب التجريبي.</p>
+                    </div>
+                </div>
+
+                <div class="branch-card reveal" style="display: flex; gap: 20px; align-items: flex-start; transition-delay: 0.1s;">
+                    <div style="width: 60px; height: 60px; min-width: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--emerald-deep), var(--accent-dark)); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--accent);">
+                        <i class="fas fa-square-root-alt"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-weight: 700; font-size: 1.05rem; margin-bottom: 4px;">الخوارزمي</h3>
+                        <span style="color: var(--accent); font-size: 0.8rem;">780 - 850 م</span>
+                        <p style="color: var(--fg-muted); font-size: 0.85rem; line-height: 1.7; margin-top: 8px;">مؤسس علم الجبر والمalgorithm، أنقذ الرياضيات من الضياع وأسس الحوسبة الحديثة.</p>
+                    </div>
+                </div>
+
+                <div class="branch-card reveal" style="display: flex; gap: 20px; align-items: flex-start; transition-delay: 0.2s;">
+                    <div style="width: 60px; height: 60px; min-width: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--emerald-deep), var(--accent-dark)); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--accent);">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-weight: 700; font-size: 1.05rem; margin-bottom: 4px;">ابن الهيثم</h3>
+                        <span style="color: var(--accent); font-size: 0.8rem;">965 - 1040 م</span>
+                        <p style="color: var(--fg-muted); font-size: 0.85rem; line-height: 1.7; margin-top: 8px;">أبو البصريات الحديثة ومؤسس المنهج العلمي التجريبي في كتابه المناظر.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التواصل -->
+    <section id="contact" style="padding: 100px 24px;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="reveal" style="text-align: center; margin-bottom: 48px;">
+                <div class="ornament-line" style="margin-bottom: 16px;">
+                    <span style="color: var(--accent); font-size: 0.85rem; font-weight: 600; letter-spacing: 2px;">ابقَ على تواصل</span>
+                </div>
+                <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 16px;">تواصل معنا</h2>
+                <p style="color: var(--fg-muted); max-width: 500px; margin: 0 auto; line-height: 1.8;">نسعد بتلقي استفساراتكم واقتراحاتكم حول التراث الإسلامي</p>
+            </div>
+<form class="reveal" id="contactForm" onsubmit="handleSubmit(event)" style="background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem;">
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div>
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: var(--fg-muted);">الاسم الكامل</label>
+            <input type="text" id="name" class="form-input" placeholder="أدخل اسمك" required>
+        </div>
+
+        <div>
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: var(--fg-muted);">البريد الإلكتروني</label>
+            <input type="email" id="email" class="form-input" placeholder="example@mail.com" required dir="ltr" style="text-align: right;">
+        </div>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+        <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: var(--fg-muted);">الموضوع</label>
+        <select id="subject" class="form-input" required>
+            <option value="" disabled selected style="color: var(--fg-muted);">اختر الموضوع</option>
+            <option value="inquiry">استفسار عام</option>
+            <option value="research">بحث علمي</option>
+            <option value="collaboration">تعاون مؤسسي</option>
+            <option value="suggestion">اقتراح</option>
+        </select>
+    </div>
+
+    <div style="margin-bottom: 24px;">
+        <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: var(--fg-muted);">الرسالة</label>
+        <textarea id="message" class="form-input" rows="5" placeholder="اكتب رسالتك هنا..." required style="resize: vertical;"></textarea>
+    </div>
+
+    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+        إرسال الرسالة
+        <i class="fas fa-paper-plane" style="font-size: 0.85rem;"></i>
+    </button>
+
+</form>
+
+
+    <!-- الفوتر -->
+    <footer style="padding: 60px 24px 30px; border-top: 1px solid var(--border);">
+        <div style="max-width: 1280px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 48px;">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-mosque" style="color: var(--bg); font-size: 1rem;"></i>
+                        </div>
+                        <span style="font-weight: 800; font-size: 1.1rem;">تراثنا</span>
+                    </div>
+                    <p style="color: var(--fg-muted); font-size: 0.85rem; line-height: 1.8;">موقع مخصص لإبراز جمال وعمق التراث الإسلامي والحفاظ على إرث الحضارة الإسلامية للأجيال القادمة.</p>
+                </div>
+
+                <div>
+                    <h4 style="font-weight: 700; margin-bottom: 16px; font-size: 0.95rem;">روابط سريعة</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="#branches" style="color: var(--fg-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--fg-muted)'">فروع التراث</a>
+                        <a href="#timeline" style="color: var(--fg-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--fg-muted)'">المسيرة التاريخية</a>
+                        <a href="#landmarks" style="color: var(--fg-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--fg-muted)'">المعالم التراثية</a>
+                        <a href="#gallery" style="color: var(--fg-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--fg-muted)'">معرض الصور</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-weight: 700; margin-bottom: 16px; font-size: 0.95rem;">المجالات</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <span style="color: var(--fg-muted); font-size: 0.85rem;">العمارة الإسلامية</span>
+                        <span style="color: var(--fg-muted); font-size: 0.85rem;">العلوم والمعارف</span>
+                        <span style="color: var(--fg-muted); font-size: 0.85rem;">الفنون والخطوط</span>
+                        <span style="color: var(--fg-muted); font-size: 0.85rem;">المخطوطات والكتب</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-weight: 700; margin-bottom: 16px; font-size: 0.95rem;">تابعنا</h4>
+                    <div style="display: flex; gap: 12px;">
+                        <a href="#" onclick="showToast('تابعنا على تويتر'); return false;" style="width: 42px; height: 42px; border-radius: 10px; background: var(--card); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--fg-muted); text-decoration: none; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--accent-dark)'; this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--fg-muted)'" aria-label="تويتر">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                        <a href="#" onclick="showToast('تابعنا على إنستغرام'); return false;" style="width: 42px; height: 42px; border-radius: 10px; background: var(--card); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--fg-muted); text-decoration: none; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--accent-dark)'; this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--fg-muted)'" aria-label="إنستغرام">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" onclick="showToast('تابعنا على يوتيوب'); return false;" style="width: 42px; height: 42px; border-radius: 10px; background: var(--card); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--fg-muted); text-decoration: none; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--accent-dark)'; this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--fg-muted)'" aria-label="يوتيوب">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid var(--border); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;">
+                <p style="color: var(--fg-muted); font-size: 0.8rem;">جميع الحقوق محفوظة 2025 — موقع تراثنا الإسلامي</p>
+                <p style="color: var(--fg-muted); font-size: 0.8rem;">صُمم بكل حب للتراث الإسلامي</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- النافذة المنبثقة -->
+    <div id="modal" class="modal-overlay" onclick="if(event.target===this) closeModal()">
+        <div class="modal-content">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                <h3 id="modalTitle" style="font-weight: 800; font-size: 1.3rem;"></h3>
+                <button onclick="closeModal()" style="background: none; border: none; color: var(--fg-muted); cursor: pointer; font-size: 1.3rem; padding: 4px;" aria-label="إغلاق">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <p id="modalBody" style="color: var(--fg-muted); line-height: 1.9; font-size: 0.95rem;"></p>
+            <div style="margin-top: 24px; text-align: left;">
+                <button class="btn-secondary" onclick="closeModal()" style="font-size: 0.9rem; padding: 10px 28px;">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- الإشعار -->
+    <div id="toast" class="toast"></div>
+<!-- Supabase Library -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Main JavaScript -->
+<script>
+    // باقي كود موقعك
+
+    const SUPABASE_URL = 'https://kcqayofeqwtslifowzoe.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtjcWF5b2ZlcXd0c2xpZm93em9lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM1NDM3NzAsImV4cCI6MjEwOTExOTc3MH0.QbAomSYPi0qPKkeuqHVSKC-liYQtihfuWtQW2MysUSE';
+
+    const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+    console.log("Supabase Connected Successfully");
+    async function testSupabase() {
+    const { data, error } = await supabaseClient
+        .from('messages')
+        .select('*');
+
+    if (error) {
+        console.error('Database Error:', error.message);
+        return;
+    }
+
+    console.log('Database Connected Successfully');
+    console.log(data);
+}
+
+
+testSupabase();
+
+// === نظام تسجيل الدخول وإنشاء الحساب ===
+
+let isLoginMode = true;
+
+// فتح نافذة تسجيل الدخول
+function openAuthModal() {
+    document.getElementById('authModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// إغلاق النافذة
+function closeAuthModal() {
+    document.getElementById('authModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// التبديل بين الدخول وإنشاء الحساب
+function switchAuthMode(e) {
+    e.preventDefault();
+
+    isLoginMode = !isLoginMode;
+
+    document.getElementById('authTitle').textContent =
+        isLoginMode ? 'تسجيل الدخول' : 'إنشاء حساب جديد';
+
+    document.getElementById('authButton').textContent =
+        isLoginMode ? 'تسجيل الدخول' : 'إنشاء الحساب';
+
+    document.getElementById('authName').style.display =
+        isLoginMode ? 'none' : 'block';
+
+    document.getElementById('authName').required = !isLoginMode;
+
+    document.getElementById('authSwitch').innerHTML =
+        isLoginMode
+        ? 'ليس لديك حساب؟ <a href="#" onclick="switchAuthMode(event)">إنشاء حساب</a>'
+        : 'لديك حساب بالفعل؟ <a href="#" onclick="switchAuthMode(event)">تسجيل الدخول</a>';
+}
+
+// تنفيذ التسجيل أو تسجيل الدخول
+async function handleAuth(e) {
+    e.preventDefault();
+
+    const email = document.getElementById('authEmail').value.trim();
+    const password = document.getElementById('authPassword').value;
+    const name = document.getElementById('authName').value.trim();
+
+    let result;
+
+    if (isLoginMode) {
+        result = await supabaseClient.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+    } else {
+        result = await supabaseClient.auth.signUp({
+            email: email,
+            password: password,
+            options: {
+                data: {
+                    full_name: name
+                }
+            }
+        });
+    }
+
+    if (result.error) {
+        showToast(result.error.message);
+        return;
+    }
+
+    if (isLoginMode) {
+        showToast('تم تسجيل الدخول بنجاح');
+        closeAuthModal();
+    } else {
+        showToast('تم إنشاء الحساب! تحقق من بريدك الإلكتروني إذا طُلب منك ذلك.');
+    }
+
+    e.target.reset();
+}
+async function updateAuthButton() {
+    const { data: { user } } = await supabaseClient.auth.getUser();
+
+    const authButton = document.getElementById('authNavButton');
+
+    if (user) {
+        const username =
+            user.user_metadata?.full_name ||
+            user.email;
+
+        authButton.textContent = username;
+        authButton.onclick = () => {
+            if (confirm('هل تريد تسجيل الخروج؟')) {
+                logout();
+            }
+        };
+    } else {
+        authButton.textContent = 'تسجيل الدخول';
+        authButton.onclick = openAuthModal;
+    }
+}
+
+async function logout() {
+    const { error } = await supabaseClient.auth.signOut();
+
+    if (error) {
+        showToast(error.message);
+        return;
+    }
+
+    showToast('تم تسجيل الخروج بنجاح');
+    updateAuthButton();
+}
+supabaseClient.auth.onAuthStateChange(() => {
+    updateAuthButton();
+});
+updateAuthButton();
+</script>
+    <script>
+        
+
+        // === إنشاء النجوم المتلألئة ===
+        (function createStars() {
+            const container = document.getElementById('starsContainer');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.setProperty('--duration', (2 + Math.random() * 4) + 's');
+                star.style.setProperty('--delay', Math.random() * 4 + 's');
+                container.appendChild(star);
+            }
+        })();
+
+        // === إنشاء الجسيمات المتحركة ===
+        (function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            for (let i = 0; i < 20; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.top = (30 + Math.random() * 60) + '%';
+                p.style.setProperty('--dur', (4 + Math.random() * 6) + 's');
+                p.style.setProperty('--del', Math.random() * 5 + 's');
+                container.appendChild(p);
+            }
+        })();
+
+        // === شريط التنقل عند التمرير ===
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            if (scrollY > 80) {
+                navbar.style.background = 'rgba(10, 15, 13, 0.92)';
+                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.borderBottom = '1px solid var(--border)';
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.backdropFilter = 'none';
+                navbar.style.borderBottom = 'none';
+            }
+            lastScroll = scrollY;
+        });
+
+        // === التتبع النشط للقسم ===
+        const sections = document.querySelectorAll('section[id], header[id]');
+        const navLinks = document.querySelectorAll('.nav-link[data-section]');
+
+        const sectionObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(function(link) {
+                        link.classList.remove('nav-active');
+                        if (link.dataset.section === entry.target.id) {
+                            link.classList.add('nav-active');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' });
+
+        sections.forEach(function(section) {
+            sectionObserver.observe(section);
+        });
+
+        // === القائمة المتنقلة ===
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+        }
+
+        // إظهار زر القائمة على الشاشات الصغيرة
+        function checkMobile() {
+            const btn = document.getElementById('menuBtn');
+            const links = document.getElementById('navLinks');
+            if (window.innerWidth < 768) {
+                btn.style.display = 'block';
+                links.style.display = 'none';
+            } else {
+                btn.style.display = 'none';
+                links.style.display = 'flex';
+                document.getElementById('mobileMenu').classList.remove('open');
+            }
+        }
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        // === تأثير الظهور عند التمرير ===
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(function(el) {
+            revealObserver.observe(el);
+        });
+
+        // === عداد الإحصائيات ===
+        const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+        let statsAnimated = false;
+
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !statsAnimated) {
+                    statsAnimated = true;
+                    animateStats();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(function(el) { statsObserver.observe(el); });
+
+        function animateStats() {
+            statNumbers.forEach(function(el) {
+                const target = parseInt(el.dataset.target);
+                const duration = 2000;
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    // تأثير التسارع السلس
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.floor(eased * target);
+
+                    if (target >= 1000000) {
+                        el.textContent = (current / 1000000).toFixed(1) + 'M+';
+                    } else if (target >= 1000) {
+                        el.textContent = current.toLocaleString('ar-EG') + '+';
+                    } else {
+                        el.textContent = '+' + current.toLocaleString('ar-EG');
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    }
+                }
+                requestAnimationFrame(update);
+            });
+        }
+
+        // === النافذة المنبثقة ===
+        function openModal(title, body) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalBody').textContent = body;
+            document.getElementById('modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // إغلاق بالضغط على Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // === الإشعار ===
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(function() {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // === إرسال النموذج ===
+        function handleSubmit(e) {
+            e.preventDefault();
+            showToast('تم إرسال رسالتك بنجاح. شكراً لتواصلك!');
+            e.target.reset();
+        }
+
+        // === تمرير سلس للروابط ===
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // === تأثير الماوس على البطل ===
+        const hero = document.getElementById('hero');
+        hero.addEventListener('mousemove', function(e) {
+            const rect = hero.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+            const patterns = hero.querySelectorAll('.geometric-pattern');
+            patterns.forEach(function(p, i) {
+                const speed = (i + 1) * 8;
+                p.style.transform = 'rotate(45deg) translate(' + (x * speed) + 'px, ' + (y * speed) + 'px)';
+            });
+        });
+    </script>
+    
+<!-- نافذة تسجيل الدخول وإنشاء الحساب -->
+<div id="authModal" class="modal">
+    <div class="modal-content">
+        <button type="button" onclick="closeAuthModal()">✕</button>
+
+        <h2 id="authTitle">تسجيل الدخول</h2>
+
+        <form id="authForm" onsubmit="handleAuth(event)">
+
+            <input
+                type="text"
+                id="authName"
+                placeholder="الاسم الكامل"
+                style="display: none;"
+            >
+
+            <input
+                type="email"
+                id="authEmail"
+                placeholder="البريد الإلكتروني"
+                required
+            >
+
+            <input
+                type="password"
+                id="authPassword"
+                placeholder="كلمة المرور"
+                required
+                minlength="6"
+            >
+
+            <button type="submit" id="authButton">
+                تسجيل الدخول
+            </button>
+
+        </form>
+
+        <p id="authSwitch">
+            ليس لديك حساب؟
+            <a href="#" onclick="switchAuthMode(event)">إنشاء حساب</a>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
